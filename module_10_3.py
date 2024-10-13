@@ -7,8 +7,9 @@ class Bank:
         self.lock = Lock()
 
     def deposit(self):
-        random_summ = random.randint(50, 500)
+
         for i in range(100):
+            random_summ = random.randint(50, 500)
             with self.lock:
                 self.balance = self.balance + random_summ
                 print(f"Пополнение: {random_summ}. Баланс:{self.balance}")
@@ -20,8 +21,9 @@ class Bank:
         time.sleep(0.001)
 
     def take(self):
-        random_summ = random.randint(50, 500)
+
         for i in range(100):
+            random_summ = random.randint(50, 500)
             print(f"Запрос на: {random_summ}")
             with self.lock:
                 if random_summ <= self.balance:
@@ -29,7 +31,7 @@ class Bank:
                     print(f"Снятие: {random_summ}. Баланс:{self.balance}")
             if random_summ >= self.balance:
                self.lock.acquire()
-               print(f"Запрос отклонен, недостаточно средств")
+        print(f"Запрос отклонен, недостаточно средств")
 
 
 
